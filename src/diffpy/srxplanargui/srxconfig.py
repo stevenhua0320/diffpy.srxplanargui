@@ -110,16 +110,21 @@ class SrXconfig(ConfigBaseTraits):
 
     _optdatalist = _optdatalist
 
-    _defaultdata = {"configfile": [], "headertitle": "SrXgui configuration"}
+    _defaultdata = {
+        "configfile": [],
+        "headertitle": "SrXgui configuration",
+    }
 
     rotation = Property(
-        depends_on="rotationd", fget=lambda self: np.radians(self.rotationd)
+        depends_on="rotationd",
+        fget=lambda self: np.radians(self.rotationd),
     )
     tilt = Property(
         depends_on="tiltd", fget=lambda self: np.radians(self.tiltd)
     )
     tthstep = Property(
-        depends_on="tthstepd", fget=lambda self: np.radians(self.tthstepd)
+        depends_on="tthstepd",
+        fget=lambda self: np.radians(self.tthstepd),
     )
     tthmax = Property(
         depends_on="tthmaxd", fget=lambda self: np.radians(self.tthmaxd)
@@ -181,7 +186,9 @@ class SrXconfig(ConfigBaseTraits):
 
     directory_group = Group(
         Item(
-            "opendirectory", label="Input dir.", help="directory of 2D images"
+            "opendirectory",
+            label="Input dir.",
+            help="directory of 2D images",
         ),
         Item(
             "savedirectory",
@@ -213,7 +220,9 @@ class SrXconfig(ConfigBaseTraits):
             visible_when='configmode == "TEM"',
         ),
         Item(
-            "distance", label="Distance", visible_when='configmode == "normal"'
+            "distance",
+            label="Distance",
+            visible_when='configmode == "normal"',
         ),
         Item("rotationd", label="Rotation"),
         Item("tiltd", label="Tilt rotation"),

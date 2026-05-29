@@ -12,6 +12,7 @@
 #
 ##############################################################################
 """Plot the 2d image."""
+
 import os
 
 import numpy as np
@@ -114,7 +115,8 @@ class ImagePlot(HasTraits):
         ),
     )
     brightpixelsize = DelegatesTo(
-        "srxconfig", desc="Size of testing area for detecting bright pixels"
+        "srxconfig",
+        desc="Size of testing area for detecting bright pixels",
     )
     darkpixelr = DelegatesTo(
         "srxconfig",
@@ -532,7 +534,10 @@ class ImagePlot(HasTraits):
             VGroup(
                 HGroup(
                     Item("addpolygon_bb", enabled_when="not maskediting"),
-                    Item("removepolygon_bb", enabled_when="not maskediting"),
+                    Item(
+                        "removepolygon_bb",
+                        enabled_when="not maskediting",
+                    ),
                     spring,
                     Item("maskabove_bb", enabled_when="not maskediting"),
                     Item("maskaboveint", enabled_when="not maskediting"),
@@ -540,7 +545,11 @@ class ImagePlot(HasTraits):
                 ),
                 HGroup(
                     Item("addpoint_bb", enabled_when="not maskediting"),
-                    Item("pointmaskradius", label="Size:", show_label=True),
+                    Item(
+                        "pointmaskradius",
+                        label="Size:",
+                        show_label=True,
+                    ),
                     spring,
                     Item("maskbelow_bb", enabled_when="not maskediting"),
                     Item("maskbelowint", enabled_when="not maskediting"),
@@ -549,7 +558,10 @@ class ImagePlot(HasTraits):
                 HGroup(
                     Item("clearmask_bb", enabled_when="not maskediting"),
                     Item("invertmask_bb", enabled_when="not maskediting"),
-                    Item("advancedmask_bb", enabled_when="not maskediting"),
+                    Item(
+                        "advancedmask_bb",
+                        enabled_when="not maskediting",
+                    ),
                     spring,
                     Item("loadmaskfile_bb"),
                     Item("savemaskfile_bb"),
@@ -685,23 +697,20 @@ class MaskPointInspector(ImageInspectorTool):
 
 
 class AdvHint(HasTraits):
-    advhinttext = str(
-        """Notes: Advanced Masks are generated during the integration
-        and refreshed for each image.
-        You can preview the masks here or apply the current masks
-        to the static mask permanently.
-
-Edge mask: mask the pixels around the image edge.
-(left, right, top, bottom)
-
-Dark pixel mask: mask the pixels too dark
-compared to their local environment
-
-Bright pixel mask: mask the pixels too bright
-compared to their local environment
-Average mask: Mask the pixels too bright or too dark
-compared to the average intensity at the similar diffraction angle.
-Correct calibration information is required."""
+    advhinttext = Str(
+        "Notes: Advanced Masks are generated during the integration\n"
+        "and refreshed for each image.\n"
+        "You can preview the masks here or apply the current masks\n"
+        "to the static mask permanently.\n\n"
+        "Edge mask: mask the pixels around the image edge.\n"
+        "(left, right, top, bottom)\n\n"
+        "Dark pixel mask: mask the pixels too dark\n"
+        "compared to their local environment\n\n"
+        "Bright pixel mask: mask the pixels too bright\n"
+        "compared to their local environment\n"
+        "Average mask: Mask the pixels too bright or too dark\n"
+        "compared to the average intensity at the similar diffraction angle.\n"
+        "Correct calibration information is required."
     )
 
     advhint_view = View(

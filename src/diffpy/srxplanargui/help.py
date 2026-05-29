@@ -64,7 +64,9 @@ class SrXguiHelp(HasTraits):
         enabled_when="object.qsindex<object.qslen",
     )
     previous_action = Action(
-        name="Previous", action="_qsprevious", enabled_when="object.qsindex>0"
+        name="Previous",
+        action="_qsprevious",
+        enabled_when="object.qsindex>0",
     )
     cpreference_action = Action(
         name="Copy to clipboard",
@@ -93,7 +95,12 @@ class SrXguiHelp(HasTraits):
         width=hwidth,
         height=hheight,
         resizable=True,
-        buttons=[cpreference_action, previous_action, next_action, OKButton],
+        buttons=[
+            cpreference_action,
+            previous_action,
+            next_action,
+            OKButton,
+        ],
         handler=HelpHandler(),
         icon=ImageResource("icon.png"),
     )

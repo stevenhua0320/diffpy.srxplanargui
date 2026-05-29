@@ -12,7 +12,10 @@ def user_filesystem(tmp_path):
     cwd_dir = base_dir / "cwd_dir"
     cwd_dir.mkdir(parents=True, exist_ok=True)
 
-    home_config_data = {"username": "home_username", "email": "home@email.com"}
+    home_config_data = {
+        "username": "home_username",
+        "email": "home@email.com",
+    }
     with open(home_dir / "diffpyconfig.json", "w") as f:
         json.dump(home_config_data, f)
 
